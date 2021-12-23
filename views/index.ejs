@@ -60,7 +60,7 @@
             <td><%= task.task_title %></td>
             <td><%= task.task_description %></td>
             <td>
-              <a href="/edit" class="btn btn-outline-primary">Editar</a>
+              <a href="/edit/<%= task.id %>" class="btn btn-outline-primary">Editar</a>
               <a href="/delete" class="btn btn-outline-danger">Borrar</a>
             </td>
           </tr> 

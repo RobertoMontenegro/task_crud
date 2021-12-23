@@ -19,7 +19,19 @@ router.get('/create', (req, res) => {
     res.render('create')
 })
 
+router.get('/edit/:id', (req, res) => {
+    const id = req.params.id
+    conexion.query('SELECT * FROM task WHERE id=?', [id], (error, results) => {
+        if(error) {
+            throw error
+        } else {
+            res.render('edit', {task: results[0]})
+        }
+    })
+})
+
 const crud = require('./controllers/taskController')
 router.post('/save', crud.save)
+router.post('/update', crud.update)
 
 module.exports = router 
