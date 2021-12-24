@@ -30,6 +30,17 @@ router.get('/edit/:id', (req, res) => {
     })
 })
 
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id
+    conexion.query('DELETE FROM task WHERE id = ?', [id], (error, results) => {
+        if(error) {
+            throw error
+        } else {
+            res.redirect('/')
+        }
+    })
+})
+
 const crud = require('./controllers/taskController')
 router.post('/save', crud.save)
 router.post('/update', crud.update)
